@@ -26,12 +26,33 @@ public class Employee extends Person {
     return department;
   }
 
+  public void setDepartment(String department) {
+    this.department = department;
+  }
+
   public LocalDate getEmploymentDate() {
     return employmentDate;
   }
 
   public float getSalary() {
     return salary;
+  }
+
+  public void setSalary(float salary) {
+    this.salary = EmployeeBuilder.sanitizeSalary(salary);
+  }
+
+  /* TODO: Rewrite to not use String.format because performance */
+  @Override
+  public String toString() {
+    return String.format(
+      "Employee [name=%s, empId=%s, department=%s, employmentDate=%s, salary=%.2f]",
+      getName(),
+      empId,
+      department,
+      employmentDate,
+      salary
+    );
   }
 
   public static class EmployeeBuilder {
@@ -73,7 +94,7 @@ public class Employee extends Person {
       return new Employee(this);
     }
 
-    private float sanitizeSalary(float salary) throws IllegalArgumentException {
+    private static float sanitizeSalary(float salary) throws IllegalArgumentException {
       if (salary < 0) {
         throw new IllegalArgumentException("salary cannot be negative");
       }
