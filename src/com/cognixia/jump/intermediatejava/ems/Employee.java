@@ -66,22 +66,12 @@ public class Employee extends Person {
     private static int counter = 1000;
     private static final DecimalFormat df = new DecimalFormat("#.00");
 
-    public EmployeeBuilder() {
-      this.firstName = null;
-      this.lastName = null;
+    public EmployeeBuilder(String firstName, String lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
       this.empId = Integer.toString(counter++);
       this.department = null;
       this.salary = 0f;
-    }
-
-    public EmployeeBuilder firstName(String firstName) {
-      this.firstName = firstName;
-      return this;
-    }
-
-    public EmployeeBuilder lastName(String lastName) {
-      this.lastName = lastName;
-      return this;
     }
 
     public EmployeeBuilder department(Department department) {
