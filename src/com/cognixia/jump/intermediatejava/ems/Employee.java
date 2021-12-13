@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Employee extends Person {
   private final String empId;
-  private String department;
+  private Department department;
   private LocalDate employmentDate;
   private float salary;
 
@@ -22,11 +22,11 @@ public class Employee extends Person {
     return empId;
   }
 
-  public String getDepartment() {
+  public Department getDepartment() {
     return department;
   }
 
-  public void setDepartment(String department) {
+  public void setDepartment(Department department) {
     this.department = department;
   }
 
@@ -59,23 +59,32 @@ public class Employee extends Person {
     private String firstName;
     private String lastName;
     private final String empId;
-    private String department;
+    private Department department;
     private LocalDate employmentDate;
     private float salary;
 
     private static int counter = 1000;
     private static final DecimalFormat df = new DecimalFormat("#.00");
 
-    public EmployeeBuilder(String firstName, String lastName) {
-      this.firstName = firstName;
-      this.lastName = lastName;
+    public EmployeeBuilder() {
+      this.firstName = null;
+      this.lastName = null;
       this.empId = Integer.toString(counter++);
       this.department = null;
-      this.employmentDate = null;
-      this.salary = 0;
+      this.salary = 0f;
     }
 
-    public EmployeeBuilder department(String department) {
+    public EmployeeBuilder firstName(String firstName) {
+      this.firstName = firstName;
+      return this;
+    }
+
+    public EmployeeBuilder lastName(String lastName) {
+      this.lastName = lastName;
+      return this;
+    }
+
+    public EmployeeBuilder department(Department department) {
       this.department = department;
       return this;
     }
