@@ -46,7 +46,7 @@ public class Employee extends Person {
   @Override
   public String toString() {
     return String.format(
-      "Employee [name=%s, empId=%s, department=%s, employmentDate=%s, salary=%.2f]",
+      "Employee [name=%s, empId=%s, department=%s, employmentDate=%s, salary=$%.2f]",
       getName(),
       empId,
       department,
@@ -64,7 +64,7 @@ public class Employee extends Person {
     private float salary;
 
     private static int counter = 1000;
-    private static final DecimalFormat salaryFormatter = new DecimalFormat("#.00");
+    private static final DecimalFormat df = new DecimalFormat("#.00");
 
     public EmployeeBuilder(String firstName, String lastName) {
       this.firstName = firstName;
@@ -99,7 +99,7 @@ public class Employee extends Person {
         throw new IllegalArgumentException("salary cannot be negative");
       }
 
-      return Float.parseFloat(salaryFormatter.format(salary));
+      return Float.parseFloat(df.format(salary));
     }
   }
 }
