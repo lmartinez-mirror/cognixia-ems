@@ -11,7 +11,7 @@ public class Employee extends Person implements Serializable {
   private float salary;
 
   private Employee(EmployeeBuilder builder) {
-    super(builder.firstName, builder.lastName);
+    super(builder.firstName, builder.lastName, builder.age);
     this.empId = builder.empId;
     this.department = builder.department;
     this.employmentDate = builder.employmentDate;
@@ -59,6 +59,7 @@ public class Employee extends Person implements Serializable {
   public static class EmployeeBuilder {
     private String firstName;
     private String lastName;
+    private int age;
     private final String empId;
     private Department department;
     private LocalDate employmentDate;
@@ -67,9 +68,10 @@ public class Employee extends Person implements Serializable {
     private static int counter = 1000;
     private static final DecimalFormat df = new DecimalFormat("#.00");
 
-    public EmployeeBuilder(String firstName, String lastName) {
+    public EmployeeBuilder(String firstName, String lastName, int age) {
       this.firstName = firstName;
       this.lastName = lastName;
+      this.age = age;
       this.empId = Integer.toString(counter++);
       this.department = null;
       this.salary = 0f;
