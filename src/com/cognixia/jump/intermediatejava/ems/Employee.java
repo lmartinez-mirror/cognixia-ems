@@ -1,9 +1,10 @@
 package com.cognixia.jump.intermediatejava.ems;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
-public class Employee extends Person {
+public class Employee extends Person implements Serializable {
   private final String empId;
   private Department department;
   private LocalDate employmentDate;
