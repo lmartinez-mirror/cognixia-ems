@@ -1,8 +1,9 @@
 package com.cognixia.jump.intermediatejava.ems;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class Department {
+public class Department implements Serializable {
   private String name;
   private final String deptId;
   private float budget;
