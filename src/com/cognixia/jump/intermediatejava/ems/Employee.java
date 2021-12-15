@@ -96,7 +96,7 @@ public class Employee extends Person implements Serializable {
       return new Employee(this);
     }
 
-    private static float sanitizeSalary(float salary) throws IllegalArgumentException {
+    public static float sanitizeSalary(float salary) throws IllegalArgumentException {
       if (salary < 0) {
         throw new IllegalArgumentException("salary cannot be negative");
       }
