@@ -109,7 +109,7 @@ public class Department implements Serializable {
       return new Department(this);
     }
 
-    private static float sanitizeBudget(float budget) throws IllegalArgumentException {
+    public static float sanitizeBudget(float budget) throws IllegalArgumentException {
       if (budget < 0) {
         throw new IllegalArgumentException("budget cannot be negative");
       }
