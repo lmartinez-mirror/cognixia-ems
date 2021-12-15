@@ -13,6 +13,7 @@ public class Controller {
   private static final Controller instance = new Controller();
   private List<Employee> employees = new ArrayList<Employee>();
   private List<Department> departments = new ArrayList<Department>();
+  public Scanner scanner = new Scanner(System.in);
 
   private Controller() {}
 
@@ -52,8 +53,9 @@ public class Controller {
     printEmployees();
     System.out.print("Choose an employee:  ");
 
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       idx = scanner.nextInt();
+      scanner.nextLine();
 
       /* if (idx < 0 || idx > employees.size()) {
         throw new IndexOutOfBoundsException("index not within range");
@@ -75,7 +77,7 @@ public class Controller {
     System.out.println("====== CREATE EMPLOYEE ======");
     EmployeeBuilder builder;
 
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       builder = null;
       System.out.print("First Name:  ");
       String firstName = scanner.nextLine();
@@ -83,6 +85,7 @@ public class Controller {
       String lastName = scanner.nextLine();
       System.out.print("Age:  ");
       int age = scanner.nextInt();
+      scanner.nextLine();
 
       builder = new EmployeeBuilder(firstName, lastName, age);
 
@@ -95,7 +98,10 @@ public class Controller {
 
       System.out.print("Salary (do not add signs):  ");
       builder.salary(scanner.nextFloat());
-      employees.add(builder.build());
+      scanner.nextLine();
+      Employee employee = builder.build();
+      employees.add(employee);
+      System.out.println("Added employee " + employee);
     }
     catch (Exception e) {
       System.out.println("failed to create employee:  " + e);
@@ -139,8 +145,9 @@ public class Controller {
     sb.append("(2) Salary\n");
 
     System.out.println(sb.toString());
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       idx = scanner.nextInt();
+      scanner.nextLine();
     }
     catch (InputMismatchException e) {
       System.out.println(e);
@@ -157,8 +164,9 @@ public class Controller {
         case 2: {
           float salary;
           System.out.print("Enter new salary:  ");
-          try (Scanner scanner = new Scanner(System.in)) {
+          try {
             salary = scanner.nextFloat();
+            scanner.nextLine();
           }
           catch (InputMismatchException e) {
             System.out.println("could not update salary:  " + e);
@@ -189,6 +197,10 @@ public class Controller {
     }
   }
 
+  public void removeAllEmployees() {
+    removeAll(employees);
+  }
+
   private int getDepartmentIndex() {
     int idx = -1;
     if (departments.isEmpty()) {
@@ -199,8 +211,9 @@ public class Controller {
     printDepartments();
     System.out.print("Choose a department:  ");
 
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       idx = scanner.nextInt();
+      scanner.nextLine();
     }
     catch (InputMismatchException e) {
       System.out.println(e);
@@ -219,8 +232,10 @@ public class Controller {
     Department target = null;
     System.out.println("Choose a department:  ");
 
-    try (Scanner scanner = new Scanner(System.in)) {
-      target = departments.get(scanner.nextInt());
+    try {
+      int idx = scanner.nextInt();
+      scanner.nextLine();
+      target = departments.get(idx);
     }
     catch (Exception e) {
       System.out.println("failed to fetch department: " + e);
@@ -232,12 +247,13 @@ public class Controller {
     System.out.println("====== CREATE DEPARTMENT =====");
     DepartmentBuilder builder;
 
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       builder = null;
       System.out.print("Name:  ");
       builder = new DepartmentBuilder(scanner.nextLine());
       System.out.print("Budget:  ");
       builder.budget(scanner.nextFloat());
+      scanner.nextLine();
       System.out.print("Phone Number:  ");
       builder.phoneNumber(scanner.nextLine());
       System.out.print("Building:  ");
@@ -248,6 +264,10 @@ public class Controller {
       }
 
       departments.add(builder.build());
+    }
+
+    catch (InputMismatchException e) {
+      System.out.println(e);
     }
   }
 
@@ -290,19 +310,21 @@ public class Controller {
     sb.append("(4) Manager\n");
     System.out.println(sb.toString());
 
-    try (Scanner scanner = new Scanner(System.in)) {
+    try {
       idx = scanner.nextInt();
+      scanner.nextLine();
     }
     catch (InputMismatchException e) {
       System.out.println(e);
     }
     finally {
       switch (idx) {
-        case 1: {
+        case 1: { // set budget
           float budget;
           System.out.println("Enter new budget:  ");
-          try (Scanner scanner = new Scanner(System.in)) {
+          try {
             budget = scanner.nextFloat();
+            scanner.nextLine();
           }
           catch (InputMismatchException e) {
             System.out.println("could not update budget:  " + e);
@@ -310,13 +332,15 @@ public class Controller {
           }
 
           department.setBudget(budget);
+          System.out.println("New budget:  " + department.getBudget());
+          break;
         }
 
         case 2: {
           System.out.println("Enter new phone number:  ");
           String phoneNumber;
 
-          try (Scanner scanner = new Scanner(System.in)) {
+          try {
             phoneNumber = scanner.nextLine();
           }
           catch (InputMismatchException e) {
@@ -325,13 +349,15 @@ public class Controller {
           }
 
           department.setPhoneNumber(phoneNumber);
+          System.out.println("New phone number: " + department.getPhoneNumber());
+          break;
         }
 
         case 3: {
           System.out.println("Enter new building:  ");
           String building;
 
-          try (Scanner scanner = new Scanner(System.in)) {
+          try {
             building = scanner.nextLine();
           }
           catch (InputMismatchException e) {
@@ -340,6 +366,8 @@ public class Controller {
           }
 
           department.setBuilding(building);
+          System.out.println("New building: " + department.getBuilding());
+          break;
         }
 
         case 4: {
@@ -347,8 +375,10 @@ public class Controller {
 
           if (manager != null) {
             department.setManager(manager);
-            System.out.println("set new manager " + manager);
+            System.out.println("New manager: " + department.getManager().getName());
           }
+
+          break;
         }
 
         default: System.out.println("invalid option");
@@ -370,6 +400,47 @@ public class Controller {
       System.out.print("removing department " + target + "...  ");
       departments.remove(idx);
       System.out.println("removed");
+    }
+  }
+
+  public void removeAllDepartments() {
+    removeAll(departments);
+  }
+
+  public void removeAll() {
+    System.out.println("this is a destructive operation, are you sure?  y/n");
+    String response = null;
+
+    try {
+      response = scanner.nextLine();
+    }
+    catch (InputMismatchException e) {
+      System.out.println(e);
+      return;
+    }
+
+    if (response.toLowerCase().startsWith("y")) {
+      employees.clear();
+      departments.clear();
+      System.out.println("it's gone, it's all gone");
+    }
+  }
+
+  public <T> void removeAll(List<T> list) {
+    System.out.println("this is a destructive operation, are you sure?  y/n");
+    String response = null;
+
+    try {
+      response = scanner.nextLine();
+    }
+    catch (InputMismatchException e) {
+      System.out.println(e);
+      return;
+    }
+
+    if (response.toLowerCase().startsWith("y")) {
+      list.clear();
+      System.out.println("aaaaaaand it's gone");
     }
   }
 }
