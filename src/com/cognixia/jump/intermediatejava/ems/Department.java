@@ -38,7 +38,11 @@ public class Department implements Serializable {
   }
 
   public void setBudget(float budget) {
-    this.budget = DepartmentBuilder.sanitizeBudget(budget);
+    try {
+      this.budget = DepartmentBuilder.sanitizeBudget(budget);
+    } catch (EMSNegativeFundsException e) {
+      System.out.println("failed to set budget");
+    }
   }
 
   public String getPhoneNumber() {
@@ -65,6 +69,20 @@ public class Department implements Serializable {
     this.manager = manager;
   }
 
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder("Department [")
+      .append("name=" + name + ", ")
+      .append("deptId=" + deptId + ", ")
+      .append("budget=" + budget + ", ")
+      .append("phoneNumber=" + phoneNumber + ", ")
+      .append("building=" + building + ", ")
+      .append("manager=" + manager.getName())
+      .append("]");
+
+    return sb.toString();
+  }
+
   public static class DepartmentBuilder {
     private String name;
     private final String deptId;
@@ -86,7 +104,11 @@ public class Department implements Serializable {
     }
 
     public DepartmentBuilder budget(float budget) {
-      this.budget = sanitizeBudget(budget);
+      try {
+        this.budget = sanitizeBudget(budget);
+      } catch (EMSNegativeFundsException e) {
+        System.out.println("failed to set budget: " + e);
+      }
       return this;
     }
 
@@ -109,9 +131,9 @@ public class Department implements Serializable {
       return new Department(this);
     }
 
-    public static float sanitizeBudget(float budget) throws IllegalArgumentException {
+    public static float sanitizeBudget(float budget) throws EMSNegativeFundsException {
       if (budget < 0) {
-        throw new IllegalArgumentException("budget cannot be negative");
+        throw new EMSNegativeFundsException();
       }
 
       return Float.parseFloat(df.format(budget));

@@ -40,20 +40,24 @@ public class Employee extends Person implements Serializable {
   }
 
   public void setSalary(float salary) {
-    this.salary = EmployeeBuilder.sanitizeSalary(salary);
+    try {
+      this.salary = EmployeeBuilder.sanitizeSalary(salary);
+    } catch (EMSNegativeFundsException e) {
+      e.printStackTrace();
+    }
   }
 
-  /* TODO: Rewrite to not use String.format because performance */
   @Override
   public String toString() {
-    return String.format(
-      "Employee [name=%s, empId=%s, department=%s, employmentDate=%s, salary=$%.2f]",
-      getName(),
-      empId,
-      department,
-      employmentDate,
-      salary
-    );
+    StringBuilder sb = new StringBuilder("Employee [")
+      .append("name=" + getName() + ", ")
+      .append("empId=" + empId + ", ")
+      .append("department=" + department.getName() + ", ")
+      .append("employmentDate=" + employmentDate + ", ")
+      .append("salary=$" + EmployeeBuilder.df.format(salary))
+      .append("]");
+
+    return sb.toString();
   }
 
   public static class EmployeeBuilder {
@@ -83,7 +87,11 @@ public class Employee extends Person implements Serializable {
     }
 
     public EmployeeBuilder salary(float salary) {
-      this.salary = sanitizeSalary(salary);
+      try {
+        this.salary = sanitizeSalary(salary);
+      } catch (EMSNegativeFundsException e) {
+        e.printStackTrace();
+      }
       return this;
     }
 
@@ -96,9 +104,9 @@ public class Employee extends Person implements Serializable {
       return new Employee(this);
     }
 
-    public static float sanitizeSalary(float salary) throws IllegalArgumentException {
+    public static float sanitizeSalary(float salary) throws EMSNegativeFundsException {
       if (salary < 0) {
-        throw new IllegalArgumentException("salary cannot be negative");
+        throw new EMSNegativeFundsException();
       }
 
       return Float.parseFloat(df.format(salary));
