@@ -130,7 +130,7 @@ public class Department {
     StringBuilder sb = new StringBuilder("Department [").append("name=" + name + ", ")
         .append("deptId=" + deptId + ", ").append("budget=" + budget + ", ")
         .append("phoneNumber=" + phoneNumber + ", ").append("building=" + building + ", ")
-        .append("manager=" + manager.getName()).append("]");
+        .append("manager=" + (manager == null ? "none" : manager.getName())).append("]");
 
     return sb.toString();
   }
