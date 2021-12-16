@@ -23,12 +23,13 @@ public abstract class View {
    * @apiNote Static method
    */
   public static void printEmployee(Employee employee) {
-    StringBuilder sb =
-        new StringBuilder("====== EMPLOYEE ======" + d).append("Name: " + employee.getName() + d)
-            .append("Age: " + employee.getAge() + d).append("Employee ID: " + employee.getId() + d)
-            .append("Department: " + employee.getDepartment() + d)
-            .append("Employment Date: " + employee.getEmploymentDate() + d)
-            .append("Salary: " + employee.getSalary() + d);
+    StringBuilder sb = new StringBuilder("====== EMPLOYEE ======" + d)
+        .append("Name: " + employee.getName() + d).append("Age: " + employee.getAge() + d)
+        .append("Employee ID: " + employee.getId() + d)
+        .append("Department: "
+            + (employee.getDepartment() == null ? "none" : employee.getDepartment().getName()) + d)
+        .append("Employment Date: " + employee.getEmploymentDate() + d)
+        .append("Salary: " + employee.getFormattedSalary() + d);
 
     System.out.println(sb.toString());
   }
