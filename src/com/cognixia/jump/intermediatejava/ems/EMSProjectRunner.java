@@ -23,7 +23,7 @@ public class EMSProjectRunner {
       int choice = 0;
 
       System.out.println(menu);
-      System.out.print("Make a selection:  ");
+      System.out.print("Make a selection (0 to exit):  ");
 
       try {
         choice = controller.scanner.nextInt();
