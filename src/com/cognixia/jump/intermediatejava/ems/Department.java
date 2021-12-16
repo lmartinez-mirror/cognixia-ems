@@ -66,6 +66,14 @@ public class Department {
   }
 
   /**
+   * @return budget as a formatted String
+   */
+
+  public String getFormattedBudget() {
+    return "$" + DepartmentBuilder.df.format(budget);
+  }
+
+  /**
    * @param budget Amount to set Department's budget to
    */
 
