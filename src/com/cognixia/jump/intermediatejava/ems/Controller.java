@@ -252,7 +252,7 @@ public class Controller {
     int idx = getEmployeeIndex();
 
     if (idx != -1) {
-      Employee target = employees.get(idx);
+      Employee target = employees.get(idx - 1);
       System.out.print("removing employee " + target + "...  ");
       employees.remove(idx);
       System.out.println("removed");
@@ -313,7 +313,7 @@ public class Controller {
     try {
       int idx = scanner.nextInt();
       scanner.nextLine();
-      target = departments.get(idx);
+      target = departments.get(idx - 1);
     } catch (Exception e) {
       System.out.println("failed to fetch department");
       e.printStackTrace();
@@ -510,7 +510,7 @@ public class Controller {
     int idx = getDepartmentIndex();
 
     if (idx != -1) {
-      Department target = departments.get(idx);
+      Department target = departments.get(idx - 1);
       System.out.print("removing department " + target + "...  ");
       departments.remove(idx);
       System.out.println("removed");
