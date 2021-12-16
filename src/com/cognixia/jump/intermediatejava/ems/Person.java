@@ -2,6 +2,7 @@ package com.cognixia.jump.intermediatejava.ems;
 
 /**
  * The base class for Employee
+ *
  * @author Luis Martinez
  */
 abstract class Person {
@@ -20,6 +21,7 @@ abstract class Person {
 
   /**
    * Full name getter
+   *
    * @returns Person's first and last name combined
    */
 
@@ -61,6 +63,7 @@ abstract class Person {
 
   /**
    * Ensures that age meets spec (cannot be negative)
+   *
    * @param age Nonnegative value to check
    * @return Same age value after checking
    * @throws IllegalArgumentException If age is less than zero

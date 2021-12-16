@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 /**
  * Class for representing Departments within the EMS system
+ *
  * @author Luis Martinez
  */
 
@@ -16,8 +17,9 @@ public class Department {
   private Employee manager;
 
   /**
-   * Private class constructor; use DepartmentBuilder to get Department
-   * instances instead of calling the constructor directly
+   * Private class constructor; use DepartmentBuilder to get Department instances instead of calling
+   * the constructor directly
+   *
    * @param builder DepartmentBuilder object for creating Department instances
    */
 
@@ -124,14 +126,10 @@ public class Department {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("Department [")
-      .append("name=" + name + ", ")
-      .append("deptId=" + deptId + ", ")
-      .append("budget=" + budget + ", ")
-      .append("phoneNumber=" + phoneNumber + ", ")
-      .append("building=" + building + ", ")
-      .append("manager=" + manager.getName())
-      .append("]");
+    StringBuilder sb = new StringBuilder("Department [").append("name=" + name + ", ")
+        .append("deptId=" + deptId + ", ").append("budget=" + budget + ", ")
+        .append("phoneNumber=" + phoneNumber + ", ").append("building=" + building + ", ")
+        .append("manager=" + manager.getName()).append("]");
 
     return sb.toString();
   }
@@ -139,8 +137,8 @@ public class Department {
   /**
    * Builder for Department class
    * <p>
-   * Use this class to create Department instances instead of directly invoking
-   * the constructor
+   * Use this class to create Department instances instead of directly invoking the constructor
+   *
    * @author Luis Martinez
    */
 
@@ -168,8 +166,8 @@ public class Department {
     /**
      * @param budget Amount to set pending Department object's budget to
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public DepartmentBuilder budget(float budget) {
@@ -182,11 +180,10 @@ public class Department {
     }
 
     /**
-     * @param phoneNumber String to assign pending Department object's phone
-     * number to
+     * @param phoneNumber String to assign pending Department object's phone number to
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public DepartmentBuilder phoneNumber(String phoneNumber) {
@@ -197,8 +194,8 @@ public class Department {
     /**
      * @param building String to assign pending Department object's building to
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public DepartmentBuilder building(String building) {
@@ -209,8 +206,8 @@ public class Department {
     /**
      * @param manager Department's new manager
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public DepartmentBuilder manager(Employee manager) {
@@ -220,8 +217,8 @@ public class Department {
 
     /**
      * @return A new Department object using Builder object's intermediate data
-     * @apiNote Terminal method: Use this method to finish a chain of
-     * intermediate method calls and yield a complete product.
+     * @apiNote Terminal method: Use this method to finish a chain of intermediate method calls and
+     *          yield a complete product.
      */
 
     public Department build() {
@@ -230,6 +227,7 @@ public class Department {
 
     /**
      * Helper method for formatting budget to USD
+     *
      * @param budget Amount to change Department's budget to
      * @return budget after processing
      * @throws EMSNegativeFundsException If budget is less than zero

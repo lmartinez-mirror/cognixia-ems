@@ -12,8 +12,9 @@ import com.cognixia.jump.intermediatejava.ems.Employee.EmployeeBuilder;
 /**
  * Controller class for EMS
  * <p>
- * This program uses a model-view-controller (MVC) paradigm to separate view logic from
- * I/O and interaction logic
+ * This program uses a model-view-controller (MVC) paradigm to separate view logic from I/O and
+ * interaction logic
+ *
  * @author Luis Martinez
  */
 
@@ -56,6 +57,7 @@ public class Controller {
 
   /**
    * Helper method for getting a single Employee with a user prompt
+   *
    * @return Employee object, or null if getEmployeeIndex returns -1
    */
 
@@ -74,8 +76,9 @@ public class Controller {
 
   /**
    * Helper method for getEmployee, handles index logic
-   * @return Index of Employee within the list of Employees, or -1 if no
-   * Employees are available at the specified index
+   *
+   * @return Index of Employee within the list of Employees, or -1 if no Employees are available at
+   *         the specified index
    */
 
   private int getEmployeeIndex() {
@@ -100,8 +103,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for Employee creation. Top-level logic should go here;
-   * call the method within the main loop.
+   * Controller method for Employee creation. Top-level logic should go here; call the method within
+   * the main loop.
    */
 
   public void createEmployee() {
@@ -139,8 +142,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for reading Employee data. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for reading Employee data. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void readEmployee() {
@@ -157,8 +160,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for updating employee data. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for updating employee data. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void updateEmployee() {
@@ -212,14 +215,15 @@ public class Controller {
           employee.setSalary(salary);
         }
 
-        default: System.out.println("invalid option");
+        default:
+          System.out.println("invalid option");
       }
     }
   }
 
   /**
-   * Controller method for removing an Employee. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for removing an Employee. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void removeEmployee() {
@@ -240,8 +244,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for removing all Employees. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for removing all Employees. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void removeAllEmployees() {
@@ -274,9 +278,10 @@ public class Controller {
 
   /**
    * Helper method for getting a Department within the Departments list;
+   *
    * @return Reference to target Department object
-   * <p>
-   * Null if list is empty
+   *         <p>
+   *         Null if list is empty
    */
 
   private Department getDepartment() {
@@ -300,8 +305,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for creating Departments. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for creating Departments. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void createDepartment() {
@@ -334,8 +339,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for reading Department data. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for reading Department data. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void readDepartment() {
@@ -352,8 +357,8 @@ public class Controller {
   }
 
   /**
-   * Controller method for updating Department data. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for updating Department data. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void updateDepartment() {
@@ -368,8 +373,8 @@ public class Controller {
   }
 
   /**
-   * Helper method for updateDepartment. This processes a single Department
-   * for targeting.
+   * Helper method for updateDepartment. This processes a single Department for targeting.
+   *
    * @param department Target Department to change attribute data for
    */
 
@@ -393,8 +398,7 @@ public class Controller {
       scanner.nextLine();
     } catch (InputMismatchException e) {
       System.out.println(e);
-    }
-    finally {
+    } finally {
       switch (idx) {
         case 1: { // set budget
           float budget;
@@ -455,14 +459,15 @@ public class Controller {
           break;
         }
 
-        default: System.out.println("invalid option");
+        default:
+          System.out.println("invalid option");
       }
     }
   }
 
   /**
-   * Controller method for removing Departments. Top-level logic should go
-   * here; call the method within the main loop.
+   * Controller method for removing Departments. Top-level logic should go here; call the method
+   * within the main loop.
    */
 
   public void removeDepartment() {
@@ -516,6 +521,7 @@ public class Controller {
 
   /**
    * For clearing out specific lists
+   *
    * @param <T> Employee
    * @param <T> Department
    * @param list Either of the two Controller lists

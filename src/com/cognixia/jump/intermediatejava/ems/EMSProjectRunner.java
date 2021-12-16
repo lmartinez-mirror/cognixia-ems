@@ -6,6 +6,7 @@ public class EMSProjectRunner {
 
   public static void main(String[] args) {
     Controller controller = Controller.getInstance();
+    boolean flag = true;
     System.out.println("====== EMPLOYEE MANAGEMENT SYSTEM 2022 EDITION ======\n\n");
 
     StringBuilder sb = new StringBuilder("Main Menu\n==========\n");
@@ -24,16 +25,16 @@ public class EMSProjectRunner {
     sb.append("\n\n");
     sb.append("(99) Burn It All Down\n");
 
-    while (true) {
+    while (flag) {
       int choice = 0;
-      System.out.println(sb.toString());
 
+      System.out.println(sb.toString());
       System.out.print("make a selection:  ");
+
       try {
         choice = controller.scanner.nextInt();
         controller.scanner.nextLine(); // apparently nextFoo does not consume newlines
-      }
-      catch (InputMismatchException e) {
+      } catch (InputMismatchException e) {
         continue;
       }
 
@@ -51,10 +52,12 @@ public class EMSProjectRunner {
         case 11: controller.removeDepartment(); break;
         case 12: controller.removeAllDepartments(); break;
         case 99: controller.removeAll(); break;
-        case 0: System.exit(0);
+        case 0: flag = false;
       }
 
       System.out.println("\n\n");
     }
+
+    System.out.println("goodbye");
   }
 }

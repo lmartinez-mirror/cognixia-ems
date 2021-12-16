@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 /**
  * Class for representing Employees
+ *
  * @author Luis Martinez
  * @see Person
  */
@@ -19,8 +20,9 @@ public class Employee extends Person {
   private float salary;
 
   /**
-   * Private class constructor; use EmployeeBuilder to get instances of Employee
-   * instead of calling the constructor directly
+   * Private class constructor; use EmployeeBuilder to get instances of Employee instead of calling
+   * the constructor directly
+   *
    * @param builder EmployeeBuilder object for creating Employee instances
    */
 
@@ -36,6 +38,7 @@ public class Employee extends Person {
    * Employee ID getter
    * <p>
    * IDs should never change
+   *
    * @return Employee's ID
    */
   public String getId() {
@@ -88,13 +91,10 @@ public class Employee extends Person {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("Employee [")
-      .append("name=" + getName() + ", ")
-      .append("empId=" + empId + ", ")
-      .append("department=" + department.getName() + ", ")
-      .append("employmentDate=" + employmentDate + ", ")
-      .append("salary=$" + EmployeeBuilder.df.format(salary))
-      .append("]");
+    StringBuilder sb = new StringBuilder("Employee [").append("name=" + getName() + ", ")
+        .append("empId=" + empId + ", ").append("department=" + department.getName() + ", ")
+        .append("employmentDate=" + employmentDate + ", ")
+        .append("salary=$" + EmployeeBuilder.df.format(salary)).append("]");
 
     return sb.toString();
   }
@@ -102,8 +102,8 @@ public class Employee extends Person {
   /**
    * Builder for Employee class
    * <p>
-   * Use this class to create Employee instances instead of directly invoking
-   * the constructor
+   * Use this class to create Employee instances instead of directly invoking the constructor
+   *
    * @author Luis Martinez
    */
 
@@ -132,8 +132,8 @@ public class Employee extends Person {
     /**
      * @param department Department to assign to pending Employee object
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public EmployeeBuilder department(Department department) {
@@ -144,8 +144,8 @@ public class Employee extends Person {
     /**
      * @param salary Amount to set pending Employee object's salary to
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public EmployeeBuilder salary(float salary) {
@@ -160,8 +160,8 @@ public class Employee extends Person {
     /**
      * @param date The date to set pending Employee object's employmentDate to
      * @return Calling Builder object
-     * @apiNote Intermediate method: Chain this method to other intermediate
-     * methods to combine results.
+     * @apiNote Intermediate method: Chain this method to other intermediate methods to combine
+     *          results.
      */
 
     public EmployeeBuilder employmentDate(LocalDate date) {
@@ -171,8 +171,8 @@ public class Employee extends Person {
 
     /**
      * @return A new Employee object using Builder object's intermediate data
-     * @apiNote Terminal method: Use this method to finish a chain of
-     * intermediate method calls and yield a complete product.
+     * @apiNote Terminal method: Use this method to finish a chain of intermediate method calls and
+     *          yield a complete product.
      */
 
     public Employee build() {
@@ -181,6 +181,7 @@ public class Employee extends Person {
 
     /**
      * Helper method for setting salary in a dollar format
+     *
      * @param salary Amount to change Employee object's salary to
      * @return salary after processing
      * @throws EMSNegativeFundsException If salary is less than zero
