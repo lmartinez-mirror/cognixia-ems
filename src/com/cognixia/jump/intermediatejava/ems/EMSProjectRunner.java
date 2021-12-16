@@ -76,7 +76,7 @@ public class EMSProjectRunner {
           flag = false;
       }
 
-      System.out.println("\n");
+      System.out.println();
     }
 
     System.out.println("goodbye");
