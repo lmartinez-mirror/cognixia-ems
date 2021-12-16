@@ -92,7 +92,8 @@ public class Employee extends Person {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder("Employee [").append("name=" + getName() + ", ")
-        .append("empId=" + empId + ", ").append("department=" + department.getName() + ", ")
+        .append("empId=" + empId + ", ")
+        .append("department=" + (department == null ? "none" : department.getName()) + ", ")
         .append("employmentDate=" + employmentDate + ", ")
         .append("salary=$" + EmployeeBuilder.df.format(salary)).append("]");
 
