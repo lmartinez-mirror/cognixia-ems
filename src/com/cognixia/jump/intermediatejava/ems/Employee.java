@@ -78,6 +78,14 @@ public class Employee extends Person {
   }
 
   /**
+   * @return salary as a formatted String
+   */
+
+  public String getFormattedSalary() {
+    return "$" + EmployeeBuilder.df.format(salary);
+  }
+
+  /**
    * @param salary Amount to change Employee's salary to
    */
 
