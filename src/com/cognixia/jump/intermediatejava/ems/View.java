@@ -38,6 +38,7 @@ public abstract class View {
    *
    * @param employees List of all employees
    * @apiNote Static method
+   * @apiNote Uses Stream for printing
    */
   public static void printEmployees(List<Employee> employees) {
     System.out.println("====== EMPLOYEES ======");
@@ -74,6 +75,7 @@ public abstract class View {
    *
    * @param departments List of all Departments
    * @apiNote Static method
+   * @apiNote Uses Stream for printing
    */
 
   public static void printDepartments(List<Department> departments) {

@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
  * Class for representing Departments within the EMS system
  *
  * @author Luis Martinez
+ * @apiNote Implements Department class bonus
  */
 
 public class Department {
