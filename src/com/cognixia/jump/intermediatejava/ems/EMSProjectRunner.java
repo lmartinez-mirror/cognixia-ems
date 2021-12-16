@@ -30,6 +30,8 @@ public class EMSProjectRunner {
         controller.scanner.nextLine(); // apparently nextFoo does not consume newlines
       } catch (InputMismatchException e) {
         continue;
+      } finally {
+        System.out.println();
       }
 
       switch (choice) {
