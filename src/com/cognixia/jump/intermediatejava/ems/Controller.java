@@ -510,9 +510,8 @@ public class Controller {
     int idx = getDepartmentIndex();
 
     if (idx != -1) {
-      Department target = departments.get(idx - 1);
-      System.out.print("removing department " + target + "...  ");
-      departments.remove(idx);
+      int target = idx - 1;
+      departments.remove(target);
       System.out.println("removed");
     }
   }
