@@ -2,10 +2,23 @@ package com.cognixia.jump.intermediatejava.ems;
 
 import java.util.List;
 
+/**
+ * View class for pretty-printing data
+ * <p>
+ * All methods are static
+ * @author Luis Martinez
+ */
+
 public abstract class View {
+  /** Do not instantiate a View object */
   private View() {}
   private static final String d = System.lineSeparator();
 
+  /**
+   * Pretty-prints an Employee object's data
+   * @param employee Employee to read out information from
+   * @apiNote Static method
+   */
   public static void printEmployee(Employee employee) {
     StringBuilder sb = new StringBuilder("====== EMPLOYEE ======" + d)
       .append("Name: " + employee.getName() + d)
@@ -18,6 +31,11 @@ public abstract class View {
     System.out.println(sb.toString());
   }
 
+  /**
+   * Prints all Employees' data
+   * @param employees List of all employees
+   * @apiNote Static method
+   */
   public static void printEmployees(List<Employee> employees) {
     System.out.println("====== EMPLOYEES ======");
 
@@ -28,6 +46,12 @@ public abstract class View {
 
     employees.stream().forEach(System.out::println);
   }
+
+  /**
+   * Pretty-prints a Department object's data
+   * @param department Department to read information from
+   * @apiNote Static method
+   */
 
   public static void printDepartment(Department department) {
     StringBuilder sb = new StringBuilder("====== DEPARTMENT ======" + d)
@@ -40,6 +64,12 @@ public abstract class View {
 
     System.out.println(sb.toString());
   }
+
+  /**
+   * Prints all Departments' data
+   * @param departments List of all Departments
+   * @apiNote Static method
+   */
 
   public static void printDepartments(List<Department> departments) {
     System.out.println("====== DEPARTMENTS ======");
